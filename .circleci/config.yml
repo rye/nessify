@@ -15,6 +15,12 @@ commands:
     steps:
       - run: cargo check
 
+  clippy:
+    steps:
+      - name: Install Clippy
+        run: "rustup component add clippy || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy"
+      - run: cargo clippy --all-targets --all-features -- -D warnings
+
 jobs:
   check-nightly:
     executor: rust-nightly
