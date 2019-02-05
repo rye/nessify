@@ -34,6 +34,7 @@ commands:
 
   codecov:
     steps:
+      - run: apt-get update && apt-get install -qy curl
       - run: bash <(curl -s https://codecov.io/bash)
 
   test:
