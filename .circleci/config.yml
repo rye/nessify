@@ -112,10 +112,8 @@ workflows:
     jobs:
       - check-nightly
       - check-latest
-      - clippy-nightly:
-          requires: [check-nightly]
-      - clippy-latest:
-          requires: [check-latest]
+      - clippy-nightly
+      - clippy-latest
       - fmt
       - test-nightly:
           requires: [check-nightly, clippy-nightly, fmt]
