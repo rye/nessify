@@ -76,6 +76,19 @@ jobs:
       - checkout
       - test
 
+  build-release-nightly:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - build-release
+
+
+  build-release-latest:
+    executor: rust-latest
+    steps:
+      - checkout
+      - build-release
+
 workflows:
   version: 2
   commit:
