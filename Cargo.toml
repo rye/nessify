@@ -5,3 +5,4 @@ edition = '2018'
 
 [dependencies]
 clap = { version = '~2.32', default-features = false }
+csv = '~1.0'
