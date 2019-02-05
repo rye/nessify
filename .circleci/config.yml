@@ -26,6 +26,17 @@ commands:
       - run: rustup component add rustfmt-preview
       - run: cargo fmt --verbose --all -- --check
 
+  tarpaulin:
+    steps:
+      - run: apt-get update && apt-get install -qy libssl-dev pkg-config
+      - run: RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin -f
+      - run: cargo tarpaulin --out Xml
+
+  codecov:
+    steps:
+      - run: apt-get update && apt-get install -qy curl
+      - run: bash <(curl -s https://codecov.io/bash)
+
   test:
     steps:
       - run: cargo test --verbose
@@ -64,6 +75,13 @@ jobs:
       - checkout
       - fmt
 
+  coverage:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - tarpaulin
+      - codecov
+
   test-nightly:
     executor: rust-nightly
     steps:
@@ -94,15 +112,15 @@ workflows:
     jobs:
       - check-nightly
       - check-latest
-      - clippy-nightly:
-          requires: [check-nightly]
-      - clippy-latest:
-          requires: [check-latest]
+      - clippy-nightly
+      - clippy-latest
       - fmt
       - test-nightly:
           requires: [check-nightly, clippy-nightly, fmt]
       - test-latest:
           requires: [check-latest, clippy-latest, fmt]
+      - coverage:
+          requires: [test-nightly]
       - build-release-nightly:
           requires: [test-nightly]
       - build-release-latest:
