@@ -67,3 +67,4 @@ workflows:
           requires: [check-nightly]
       - clippy-latest:
           requires: [check-latest]
+      - fmt
