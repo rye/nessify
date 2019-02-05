@@ -2,6 +2,7 @@
 name = 'nessify'
 version = '0.0.0'
 edition = '2018'
+license = 'MIT'
 
 [dependencies]
 clap = { version = '~2.32', default-features = false }
