@@ -50,6 +50,12 @@ jobs:
     steps:
       - checkout
       - clippy
+  fmt:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - fmt
+
 
 workflows:
   version: 2
