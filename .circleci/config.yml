@@ -24,7 +24,7 @@ commands:
   fmt:
     steps:
       - run: rustup component add rustfmt-preview
-      - run: cargo fmt --all -- --check
+      - run: cargo fmt --verbose --all -- --check
 
 jobs:
   check-nightly:
