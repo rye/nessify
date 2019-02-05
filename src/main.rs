@@ -29,7 +29,7 @@ fn main() {
 			for dump in results {
 				println!("Dumps: {:?}", dump);
 			}
-		},
-		None => panic!("No dump filenames given; cannot do anything.")
+		}
+		None => panic!("No dump filenames given; cannot do anything."),
 	}
 }
