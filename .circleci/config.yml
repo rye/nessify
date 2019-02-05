@@ -28,8 +28,15 @@ jobs:
       - checkout
       - check
 
+  clippy-nightly:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - clippy
+
 workflows:
   version: 2
   commit:
     jobs:
       - check-nightly
+      - clippy-nightly
