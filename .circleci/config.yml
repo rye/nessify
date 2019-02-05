@@ -82,7 +82,6 @@ jobs:
       - checkout
       - build-release
 
-
   build-release-latest:
     executor: rust-latest
     steps:
