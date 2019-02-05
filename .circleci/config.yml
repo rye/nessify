@@ -19,7 +19,7 @@ commands:
     description: Run Clippy
     steps:
       - run: rustup component add clippy || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy
-      - run: cargo clippy --all-targets --all-features -- -D warnings
+      - run: cargo clippy --verbose --all-targets --all-features -- -D warnings
 
   fmt:
     steps:
