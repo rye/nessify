@@ -16,9 +16,9 @@ commands:
       - run: cargo check
 
   clippy:
+    description: Run Clippy
     steps:
-      - name: Install Clippy
-        run: "rustup component add clippy || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy"
+      - run: rustup component add clippy || cargo install --git ssh://git@github.com/rust-lang/rust-clippy.git --force clippy
       - run: cargo clippy --all-targets --all-features -- -D warnings
 
 jobs:
