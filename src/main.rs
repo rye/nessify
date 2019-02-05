@@ -9,6 +9,7 @@ fn main() {
 		.version(VERSION)
 		.author(AUTHORS)
 		.arg(Arg::with_name("dump")
+		     .value_name("DUMP")
 		     .multiple(true)
 		     .required(true))
 		.get_matches();
