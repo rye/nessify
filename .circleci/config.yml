@@ -31,6 +31,10 @@ commands:
       - run: RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin -f
       - run: cargo tarpaulin --out Xml
 
+  codecov:
+    steps:
+      - run: bash <(curl -s https://codecov.io/bash)
+
   test:
     steps:
       - run: cargo test --verbose
