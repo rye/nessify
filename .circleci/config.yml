@@ -60,6 +60,17 @@ jobs:
       - checkout
       - fmt
 
+  test-nightly:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - test
+
+  test-latest:
+    executor: rust-latest
+    steps:
+      - checkout
+      - test
 
 workflows:
   version: 2
