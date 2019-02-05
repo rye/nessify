@@ -1,8 +1,8 @@
 extern crate clap;
 use clap::{App, Arg};
 
-const VERSION: &'static str = env!("CARGO_PKG_VERSION");
-const AUTHORS: &'static str = env!("CARGO_PKG_AUTHORS");
+const VERSION: &str = env!("CARGO_PKG_VERSION");
+const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
 
 fn main() {
 	let matches = App::new("nessify")
