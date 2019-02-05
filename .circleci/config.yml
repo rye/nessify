@@ -26,6 +26,10 @@ commands:
       - run: rustup component add rustfmt-preview
       - run: cargo fmt --verbose --all -- --check
 
+  test:
+    steps:
+      - run: cargo test
+
 jobs:
   check-nightly:
     executor: rust-nightly
