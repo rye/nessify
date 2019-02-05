@@ -73,6 +73,13 @@ jobs:
       - checkout
       - fmt
 
+  coverage:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - tarpaulin
+      - codecov
+
   test-nightly:
     executor: rust-nightly
     steps:
