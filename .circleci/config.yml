@@ -28,6 +28,7 @@ commands:
 
   tarpaulin:
     steps:
+      - run: apt-get update && apt-get install libssl-dev
       - run: RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin -f
       - run: cargo tarpaulin --out Xml
 
