@@ -83,3 +83,7 @@ workflows:
       - clippy-latest:
           requires: [check-latest]
       - fmt
+      - test-nightly:
+          requires: [check-nightly, clippy-nightly, fmt]
+      - test-latest:
+          requires: [check-latest, clippy-latest, fmt]
