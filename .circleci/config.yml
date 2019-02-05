@@ -103,3 +103,7 @@ workflows:
           requires: [check-nightly, clippy-nightly, fmt]
       - test-latest:
           requires: [check-latest, clippy-latest, fmt]
+      - build-release-nightly:
+          requires: [test-nightly]
+      - build-release-latest:
+          requires: [test-latest]
