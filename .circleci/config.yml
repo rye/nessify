@@ -28,8 +28,20 @@ jobs:
       - checkout
       - check
 
+  check-latest:
+    executor: rust-latest
+    steps:
+      - checkout
+      - check
+
   clippy-nightly:
     executor: rust-nightly
+    steps:
+      - checkout
+      - clippy
+
+  clippy-latest:
+    executor: rust-latest
     steps:
       - checkout
       - clippy
@@ -39,4 +51,6 @@ workflows:
   commit:
     jobs:
       - check-nightly
+      - check-latest
       - clippy-nightly
+      - clippy-latest
