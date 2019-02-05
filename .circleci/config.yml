@@ -26,6 +26,11 @@ commands:
       - run: rustup component add rustfmt-preview
       - run: cargo fmt --verbose --all -- --check
 
+  tarpaulin:
+    steps:
+      - run: RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin -f
+      - run: cargo tarpaulin --out Xml
+
   test:
     steps:
       - run: cargo test --verbose
