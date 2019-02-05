@@ -119,6 +119,8 @@ workflows:
           requires: [check-nightly, clippy-nightly, fmt]
       - test-latest:
           requires: [check-latest, clippy-latest, fmt]
+      - coverage:
+          requires: [test-nightly]
       - build-release-nightly:
           requires: [test-nightly]
       - build-release-latest:
