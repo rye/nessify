@@ -63,5 +63,7 @@ workflows:
     jobs:
       - check-nightly
       - check-latest
-      - clippy-nightly
-      - clippy-latest
+      - clippy-nightly:
+          requires: [check-nightly]
+      - clippy-latest:
+          requires: [check-latest]
