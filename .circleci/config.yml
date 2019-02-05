@@ -6,6 +6,10 @@ executors:
     docker:
       - image: docker.io/rustlang/rust:nightly-slim
 
+  rust-latest:
+    docker:
+      - image: docker.io/rust:1.32.0-slim
+
 commands:
   check:
     steps:
