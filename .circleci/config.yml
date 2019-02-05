@@ -1,5 +1,25 @@
 ---
 version: 2.1
 
+executors:
+  rust-nightly:
+    docker:
+      - image: docker.io/rustlang/rust:nightly-slim
+
+commands:
+  check:
+    steps:
+      - run: cargo check
+
+jobs:
+  check-nightly:
+    executor: rust-nightly
+    steps:
+      - checkout
+      - check
+
 workflows:
   version: 2
+  commit:
+    jobs:
+      - check-nightly
