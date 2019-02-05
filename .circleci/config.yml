@@ -28,7 +28,7 @@ commands:
 
   test:
     steps:
-      - run: cargo test
+      - run: cargo test --verbose
 
 jobs:
   check-nightly:
