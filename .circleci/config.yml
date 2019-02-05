@@ -30,6 +30,10 @@ commands:
     steps:
       - run: cargo test --verbose
 
+  build-release:
+    steps:
+      - run: cargo build --release --verbose
+
 jobs:
   check-nightly:
     executor: rust-nightly
