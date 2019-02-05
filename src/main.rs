@@ -1,3 +1,5 @@
+extern crate csv;
+
 extern crate clap;
 use clap::{App, Arg};
 
