@@ -1,3 +1,5 @@
+use std::collections::hash_map::DefaultHasher;
+use std::hash::{Hash, Hasher};
 use std::net::IpAddr;
 
 // {Host, Protocol, Port} => Host
@@ -46,6 +48,15 @@ struct Plugin {
 	see_also: String,
 }
 
+impl PartialEq for Plugin {
+	fn eq(&self, other: &Plugin) -> bool {
+		let mut s = DefaultHasher::new();
+		let mut o = DefaultHasher::new();
+		self.hash(&mut s);
+		other.hash(&mut o);
+		s.finish() == o.finish()
+	}
+}
 struct Host {
 	hostname: String,
 	addr: IpAddr,
