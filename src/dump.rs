@@ -87,8 +87,10 @@ struct Detection {
 	plugin_output: String,
 }
 
+#[allow(dead_code)]
 pub struct Dump {
 	filename: String,
+	detections: Vec<Detection>,
 }
 
 impl Dump {
@@ -141,6 +143,19 @@ impl Dump {
 					assert_eq!(hosts.insert(record_host.clone()), true);
 					print!("H")
 				}
+
+				let plugin: Plugin = plugins.get(&record_plugin).unwrap().clone();
+				let host: Host = hosts.get(&record_host).unwrap().clone();
+
+				let record_detection = Detection {
+					host,
+					plugin,
+					plugin_output: record.plugin_output,
+					port: record.port,
+					protocol: record.protocol,
+				};
+
+				detections.insert(record_detection);
 			});
 
 		println!("plugins: {}", plugins.len());
@@ -149,6 +164,7 @@ impl Dump {
 
 		Dump {
 			filename: "test".to_string(),
+			detections: detections.iter().cloned().collect(),
 		}
 	}
 }
