@@ -3,6 +3,7 @@ extern crate csv;
 extern crate clap;
 use clap::{App, Arg};
 
+use nessify::*;
 use std::fs::File;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
