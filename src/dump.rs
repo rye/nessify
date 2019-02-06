@@ -103,6 +103,18 @@ impl Dump {
 			.deserialize()
 			.filter_map(|result| -> Option<Record> { result.ok() })
 			.for_each(|record| {
+				let record_plugin = Plugin {
+					id: record.plugin_id,
+					cve: vec![record.cve],
+					cvss: record.cvss,
+					risk: record.risk,
+					name: record.name,
+					synopsis: record.synopsis,
+					description: record.description,
+					solution: record.solution,
+					see_also: record.see_also,
+				};
+
 			});
 
 		println!("plugins: {}", plugins.len());
