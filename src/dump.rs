@@ -1,44 +1,8 @@
-use std::collections::{hash_map::DefaultHasher, HashSet};
-use std::hash::{Hash, Hasher};
+use std::collections::HashSet;
 
 mod host;
+mod plugin;
 mod record;
-
-#[derive(Clone, Eq)]
-struct Plugin {
-	id: i32,
-	cve: Vec<String>,
-	cvss: String,
-	risk: String,
-	name: String,
-	synopsis: String,
-	description: String,
-	solution: String,
-	see_also: String,
-}
-
-impl PartialEq for Plugin {
-	fn eq(&self, other: &Plugin) -> bool {
-		let mut s = DefaultHasher::new();
-		let mut o = DefaultHasher::new();
-		self.hash(&mut s);
-		other.hash(&mut o);
-		s.finish() == o.finish()
-	}
-}
-
-impl Hash for Plugin {
-	fn hash<H: Hasher>(&self, state: &mut H) {
-		self.id.hash(state);
-		self.cvss.hash(state);
-		self.risk.hash(state);
-		self.name.hash(state);
-		self.synopsis.hash(state);
-		self.description.hash(state);
-		self.solution.hash(state);
-		self.see_also.hash(state);
-	}
-}
 
 #[derive(Clone, Hash, Eq, PartialEq)]
 struct Detection {
@@ -49,6 +13,7 @@ struct Detection {
 	plugin_output: String,
 }
 use host::*;
+use plugin::*;
 use record::*;
 
 #[allow(dead_code)]
