@@ -57,6 +57,19 @@ impl PartialEq for Plugin {
 		s.finish() == o.finish()
 	}
 }
+
+impl Hash for Plugin {
+	fn hash<H: Hasher>(&self, state: &mut H) {
+		self.id.hash(state);
+		self.cvss.hash(state);
+		self.risk.hash(state);
+		self.name.hash(state);
+		self.synopsis.hash(state);
+		self.description.hash(state);
+		self.solution.hash(state);
+		self.see_also.hash(state);
+	}
+}
 struct Host {
 	hostname: String,
 	addr: IpAddr,
