@@ -78,6 +78,7 @@ struct Host {
 	addr: IpAddr,
 }
 
+#[derive(Clone, Hash, Eq, PartialEq)]
 struct Detection {
 	host: Host,
 	port: u32,
