@@ -13,8 +13,8 @@ use record::*;
 #[derive(Debug, Clone)]
 #[allow(dead_code)]
 pub struct Dump {
-	filename: String,
-	detections: Vec<Detection>,
+	pub filename: String,
+	pub detections: Vec<Detection>,
 }
 
 impl Dump {
@@ -53,20 +53,15 @@ impl Dump {
 							cve: [plugin.cve.as_slice(), record_plugin.cve.as_slice()].concat(),
 							..(plugin.clone())
 						});
-
-						print!("p");
 					}
 				} else {
 					assert_eq!(plugins.insert(record_plugin.clone()), true);
-
-					print!("P");
 				}
 
 				let host = hosts.get(&record_host);
 
 				if host.is_none() {
 					assert_eq!(hosts.insert(record_host.clone()), true);
-					print!("H")
 				}
 
 				let plugin: Plugin = plugins.get(&record_plugin).unwrap().clone();
@@ -82,12 +77,6 @@ impl Dump {
 
 				detections.insert(record_detection);
 			});
-
-		println!();
-
-		println!("plugins: {}", plugins.len());
-		println!("hosts: {}", hosts.len());
-		println!("detections: {}", detections.len());
 
 		Dump {
 			filename: "test".to_string(),
