@@ -2,6 +2,7 @@
 // {Plugin ID, CVE, CVSS, Name, Synopsis, Description, Solution, See Also} => Plugin
 // {Plugin Output} => Detection (&Host, &Plugin) also
 
+#[derive(Debug, Deserialize)]
 struct Record {
 	plugin_id: i32,
 	cve: String,
