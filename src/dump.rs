@@ -1,4 +1,4 @@
-use std::collections::hash_map::DefaultHasher;
+use std::collections::{hash_map::DefaultHasher, HashSet};
 use std::hash::{Hash, Hasher};
 use std::net::IpAddr;
 
@@ -94,6 +94,20 @@ pub struct Dump {
 impl Dump {
 	pub fn read<R: std::io::Read>(rdr: R) -> Dump {
 		let mut reader = csv::Reader::from_reader(rdr);
+
+		let mut plugins: HashSet<Plugin> = HashSet::new();
+		let mut hosts: HashSet<Host> = HashSet::new();
+		let mut detections: HashSet<Detection> = HashSet::new();
+
+		reader
+			.deserialize()
+			.filter_map(|result| -> Option<Record> { result.ok() })
+			.for_each(|record| {
+			});
+
+		println!("plugins: {}", plugins.len());
+		println!("hosts: {}", hosts.len());
+		println!("detections: {}", detections.len());
 
 		Dump {
 			filename: "test".to_string(),
