@@ -71,6 +71,8 @@ impl Hash for Plugin {
 		self.see_also.hash(state);
 	}
 }
+
+#[derive(Clone, Hash, Eq, PartialEq)]
 struct Host {
 	hostname: String,
 	addr: IpAddr,
