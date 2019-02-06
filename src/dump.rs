@@ -120,6 +120,20 @@ impl Dump {
 					addr: record.host.parse().unwrap(),
 				};
 
+				if let Some(plugin) = plugins.get(&record_plugin) {
+					if !plugin.cve.contains(record_plugin.cve.first().unwrap()) {
+						plugins.replace(Plugin {
+							cve: [plugin.cve.as_slice(), record_plugin.cve.as_slice()].concat(),
+							..(plugin.clone())
+						});
+
+						print!("p");
+					}
+				} else {
+					assert_eq!(plugins.insert(record_plugin.clone()), true);
+
+					print!("P");
+				}
 			});
 
 		println!("plugins: {}", plugins.len());
