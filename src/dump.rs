@@ -1,21 +1,16 @@
 use std::collections::HashSet;
 
+mod detection;
 mod host;
 mod plugin;
 mod record;
 
-#[derive(Clone, Hash, Eq, PartialEq)]
-struct Detection {
-	host: Host,
-	port: u32,
-	protocol: String,
-	plugin: Plugin,
-	plugin_output: String,
-}
+use detection::*;
 use host::*;
 use plugin::*;
 use record::*;
 
+#[derive(Debug, Clone)]
 #[allow(dead_code)]
 pub struct Dump {
 	filename: String,
