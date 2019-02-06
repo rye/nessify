@@ -37,6 +37,8 @@ fn main() {
 				println!("Dumps: {:?}", dump);
 
 				let file = File::open(dump).unwrap();
+
+				Dump::read(file);
 			}
 		}
 		None => panic!("No dump filenames given; cannot do anything."),

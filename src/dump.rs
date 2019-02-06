@@ -16,3 +16,9 @@ struct Detection {
 
 pub struct Dump {
 }
+
+impl Dump {
+	pub fn read<R: std::io::Read>(rdr: R) -> Dump {
+		Dump {}
+	}
+}
