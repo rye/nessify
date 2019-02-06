@@ -1,7 +1,7 @@
 use std::collections::{hash_map::DefaultHasher, HashSet};
 use std::hash::{Hash, Hasher};
-use std::net::IpAddr;
 
+mod host;
 mod record;
 
 #[derive(Clone, Eq)]
@@ -41,12 +41,6 @@ impl Hash for Plugin {
 }
 
 #[derive(Clone, Hash, Eq, PartialEq)]
-struct Host {
-	hostname: String,
-	addr: IpAddr,
-}
-
-#[derive(Clone, Hash, Eq, PartialEq)]
 struct Detection {
 	host: Host,
 	port: u32,
@@ -54,6 +48,7 @@ struct Detection {
 	plugin: Plugin,
 	plugin_output: String,
 }
+use host::*;
 use record::*;
 
 #[allow(dead_code)]
