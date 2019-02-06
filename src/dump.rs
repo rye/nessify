@@ -36,6 +36,7 @@ struct Record {
 	plugin_output: String,
 }
 
+#[derive(Clone, Eq)]
 struct Plugin {
 	id: i32,
 	cve: Vec<String>,
