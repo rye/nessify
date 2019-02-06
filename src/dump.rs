@@ -101,6 +101,7 @@ impl Dump {
 		let mut hosts: HashSet<Host> = HashSet::new();
 		let mut detections: HashSet<Detection> = HashSet::new();
 
+		// TODO refactor for efficiency and conciseness
 		reader
 			.deserialize()
 			.filter_map(|result| -> Option<Record> { result.ok() })
@@ -157,6 +158,8 @@ impl Dump {
 
 				detections.insert(record_detection);
 			});
+
+		println!();
 
 		println!("plugins: {}", plugins.len());
 		println!("hosts: {}", hosts.len());
