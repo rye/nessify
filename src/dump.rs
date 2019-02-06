@@ -115,6 +115,11 @@ impl Dump {
 					see_also: record.see_also,
 				};
 
+				let record_host = Host {
+					hostname: record.host.clone(),
+					addr: record.host.parse().unwrap(),
+				};
+
 			});
 
 		println!("plugins: {}", plugins.len());
