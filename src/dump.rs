@@ -1,3 +1,5 @@
+use std::net::IpAddr;
+
 // {Host, Protocol, Port} => Host
 // {Plugin ID, CVE, CVSS, Name, Synopsis, Description, Solution, See Also} => Plugin
 // {Plugin Output} => Detection (&Host, &Plugin) also
@@ -33,15 +35,32 @@ struct Record {
 }
 
 struct Plugin {
+	id: i32,
+	cve: Vec<String>,
+	cvss: String,
+	risk: String,
+	name: String,
+	synopsis: String,
+	description: String,
+	solution: String,
+	see_also: String,
 }
 
 struct Host {
+	hostname: String,
+	addr: IpAddr,
 }
 
 struct Detection {
+	host: Host,
+	port: u32,
+	protocol: String,
+	plugin: Plugin,
+	plugin_output: String,
 }
 
 pub struct Dump {
+	filename: String,
 }
 
 impl Dump {
