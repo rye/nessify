@@ -19,6 +19,10 @@ pub struct Dump {
 
 impl Dump {
 	pub fn read<R: std::io::Read>(rdr: R) -> Dump {
-		Dump {}
+		let mut reader = csv::Reader::from_reader(rdr);
+
+		Dump {
+			filename: "test".to_string(),
+		}
 	}
 }
