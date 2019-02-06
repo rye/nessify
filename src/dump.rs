@@ -134,6 +134,13 @@ impl Dump {
 
 					print!("P");
 				}
+
+				let host = hosts.get(&record_host);
+
+				if host.is_none() {
+					assert_eq!(hosts.insert(record_host.clone()), true);
+					print!("H")
+				}
 			});
 
 		println!("plugins: {}", plugins.len());
