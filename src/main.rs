@@ -3,6 +3,9 @@ extern crate csv;
 extern crate clap;
 use clap::{App, Arg};
 
+use nessify::*;
+use std::fs::File;
+
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 const AUTHORS: &str = env!("CARGO_PKG_AUTHORS");
 
@@ -33,6 +36,10 @@ fn main() {
 		Some(results) => {
 			for dump in results {
 				println!("Dumps: {:?}", dump);
+
+				let file = File::open(dump).unwrap();
+
+				Dump::read(file);
 			}
 		}
 		None => panic!("No dump filenames given; cannot do anything."),
