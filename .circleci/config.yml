@@ -108,7 +108,7 @@ jobs:
 
 workflows:
   version: 2
-  commit:
+  commit: &standard_workflow
     jobs:
       - check-nightly
       - check-latest
@@ -125,3 +125,10 @@ workflows:
           requires: [test-nightly]
       - build-release-latest:
           requires: [test-latest]
+
+  qid:
+    triggers:
+      - schedule:
+          cron: "0 0,6,12,18 * * *"
+          filters: {branches: {only: [master]}}
+    <<: *standard_workflow
