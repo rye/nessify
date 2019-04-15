@@ -15,7 +15,7 @@ pub struct Plugin {
 }
 
 impl PartialEq for Plugin {
-	fn eq(&self, other: &Plugin) -> bool {
+	fn eq(&self, other: &Self) -> bool {
 		let mut s = DefaultHasher::new();
 		let mut o = DefaultHasher::new();
 		self.hash(&mut s);

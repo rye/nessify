@@ -18,7 +18,7 @@ pub struct Dump {
 }
 
 impl Dump {
-	pub fn read<R: std::io::Read>(rdr: R) -> Dump {
+	pub fn read<R: std::io::Read>(rdr: R) -> Self {
 		let mut reader = csv::Reader::from_reader(rdr);
 
 		let mut plugins: HashSet<Plugin> = HashSet::new();
@@ -78,7 +78,7 @@ impl Dump {
 				detections.insert(record_detection);
 			});
 
-		Dump {
+		Self {
 			filename: "test".to_string(),
 			detections: detections.iter().cloned().collect(),
 		}
