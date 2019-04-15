@@ -49,10 +49,11 @@ impl Dump {
 
 				if let Some(plugin) = plugins.get(&record_plugin) {
 					if !plugin.cve.contains(record_plugin.cve.first().unwrap()) {
-						plugins.replace(Plugin {
+						let replacement = Plugin {
 							cve: [plugin.cve.as_slice(), record_plugin.cve.as_slice()].concat(),
 							..(plugin.clone())
-						});
+						};
+						plugins.replace(replacement);
 					}
 				} else {
 					assert_eq!(plugins.insert(record_plugin.clone()), true);
