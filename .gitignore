@@ -1,6 +1,9 @@
 # Ignore any target directories
 target/
 
+# Ignore Cargo.lock
+Cargo.lock
+
 # Ignore all un-test-related .csv files and .gz files
 *.gz
 *.csv
