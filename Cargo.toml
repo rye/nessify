@@ -1,8 +1,15 @@
 [package]
 name = 'nessify'
+authors = ['Kristofer Rye <kristofer.rye@gmail.com>']
+repository = 'https://github.com/rye/nessify'
+readme = 'README.md'
+description = 'A decommissioned side project for parsing Nessus dumps and turning them into cooler stuff'
 version = '0.0.0'
 edition = '2018'
 license = 'MIT'
+
+[badges]
+maintenance = { status = 'deprecated' }
 
 [dependencies]
 clap = { version = '~2.33', default-features = false }
